@@ -349,3 +349,244 @@ html, body {
     position: relative; /* Para que esté por encima del número */
     z-index: 2;
 }
+
+/* --- Estilos de la Sección 5: El Recorrido (Mapa) --- */
+.map-section {
+    padding: 80px 20px;
+    background-color: #0e1320; /* Mantenemos el fondo oscuro de contraste */
+}
+
+/* Creamos una clase genérica para los subtítulos de sección */
+.section-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 800px; /* Limitamos el ancho para fácil lectura */
+    margin: 0 auto 40px auto; /* Centrado y con espacio inferior */
+}
+
+.map-placeholder {
+    width: 100%;
+    max-width: 1100px; /* Ancho máximo del mapa */
+    height: 500px; /* Altura fija para el contenedor */
+    margin: 0 auto; /* Centramos el contenedor */
+    border: 2px dashed var(--color-primary); /* Borde punteado para indicar que es un placeholder */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(18, 24, 40, 0.5); /* Fondo oscuro interno */
+    backdrop-filter: blur(5px);
+}
+
+.map-placeholder p {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    color: var(--color-primary);
+    opacity: 0.5;
+}
+
+/* --- Estilos de la Sección 6: Reglamento y Premios --- */
+.rules-section {
+    padding: 80px 20px;
+    background-color: var(--color-background-dark);
+}
+
+.accordion-container {
+    max-width: 900px;
+    margin: 40px auto 0 auto; /* Espacio superior y centrado */
+    border: 1px solid rgba(243, 156, 18, 0.2);
+    border-radius: 10px;
+    overflow: hidden; /* Para que los bordes redondeados se apliquen a los hijos */
+}
+
+.accordion-item {
+    border-bottom: 1px solid rgba(243, 156, 18, 0.2);
+}
+.accordion-item:last-child {
+    border-bottom: none; /* Elimina el borde del último elemento */
+}
+
+.accordion-header {
+    width: 100%;
+    background-color: #161e31;
+    border: none;
+    padding: 20px 30px;
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    color: var(--color-text-light);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #1a243a;
+}
+
+/* El signo '+' o '-' */
+.accordion-header::after {
+    content: '+'; /* Por defecto, muestra un signo de más */
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+}
+
+/* Estilo para cuando el acordeón está activo */
+.accordion-header.active {
+    background-color: var(--color-background-dark);
+}
+
+.accordion-header.active::after {
+    transform: rotate(45deg); /* Gira el '+' para que parezca una 'x' */
+}
+
+.accordion-content {
+    max-height: 0; /* Oculto por defecto */
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    background-color: #0e1320;
+}
+
+.accordion-content-inner {
+    padding: 30px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+}
+
+.accordion-content-inner h4 {
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.accordion-content-inner ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.accordion-content-inner li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.accordion-content-inner li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    top: 6px;
+}
+
+.demo-placeholder {
+    margin-top: 50px;
+    padding: 30px;
+    border: 2px dashed var(--color-secondary);
+    border-radius: 10px;
+}
+
+.demo-placeholder p {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* --- Estilos de la Sección 7: Ranking en Vivo --- */
+.ranking-section {
+    padding: 80px 20px;
+    background-color: #0e1320;
+}
+
+.ranking-section h3 {
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    margin-top: -15px; /* Pega el subtítulo al título principal */
+    margin-bottom: 40px;
+}
+
+.table-container {
+    border: 1px solid rgba(243, 156, 18, 0.2);
+    border-radius: 10px;
+    overflow: hidden; /* Para que los bordes redondeados se apliquen a la tabla */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Placeholder para la tabla */
+.table-container p {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    color: var(--color-primary);
+    opacity: 0.5;
+    padding: 80px 40px;
+    background-color: rgba(18, 24, 40, 0.5);
+    margin: 0;
+}
+
+
+/* --- Estilos de la Sección 8: Aliados (Sponsors) --- */
+.allies-section {
+    padding: 80px 20px;
+    background-color: var(--color-background-dark);
+}
+
+.sponsors-grid {
+    margin-top: 40px;
+    border: 2px dashed var(--color-text-secondary);
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.sponsors-grid p {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    margin: 0;
+}
+
+.allies-section h3 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.organizer-logo {
+     border: 2px dashed var(--color-text-secondary);
+     border-radius: 10px;
+     padding: 20px;
+     max-width: 300px;
+     margin: 0 auto;
+}
+
+.organizer-logo p {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    margin: 0;
+}
+
+
+/* --- Estilos del Pie de Página (Footer) --- */
+.main-footer {
+    padding: 40px 20px;
+    background-color: #000;
+    border-top: 2px solid var(--color-primary);
+}
+
+.main-footer p {
+    color: var(--color-text-secondary);
+    margin: 0;
+}
