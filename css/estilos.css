@@ -218,3 +218,76 @@ html, body {
     color: #fff;
     margin-top: 40px;
 }
+
+/* --- Estilos Comunes y Contenedores --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* En la sección .intro-section, vamos a centrar el título que ya teniamos */
+.intro-section .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+/* Y ajustamos el contenedor para que el texto siga a la izquierda */
+.intro-section .intro-content-container .intro-text .section-title {
+    text-align: left;
+}
+
+
+/* --- Estilos de la Sección 3: La Misión (Lore) --- */
+.mission-section {
+    padding: 80px 20px;
+    /* Usamos el mismo fondo oscuro principal para una transición suave */
+}
+
+.mission-section .section-title {
+    margin-bottom: 60px; /* Más espacio después del título */
+}
+
+.mission-grid {
+    display: grid; /* Usamos CSS Grid para un layout moderno */
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas de igual tamaño */
+    gap: 40px; /* Espacio entre las tarjetas */
+}
+
+.mission-card {
+    background-color: #161e31; /* Un color de fondo ligeramente más claro */
+    padding: 40px 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(243, 156, 18, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(243, 156, 18, 0.1);
+}
+
+.mission-icon {
+    font-size: 3rem; /* Tamaño grande para el icono */
+    line-height: 1;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+.mission-card h3 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    margin: 0 0 15px 0;
+    color: #fff;
+}
+
+.mission-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
