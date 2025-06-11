@@ -1,0 +1,220 @@
+/* --- Importación de Fuentes de Google --- */
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* --- Variables Globales de Diseño (Colores y Fuentes de la App Original) --- */
+:root {
+    --color-primary: #f39c12; /* Naranja/Dorado principal */
+    --color-secondary: #e67e22; /* Naranja secundario */
+    --color-background-dark: #121828; /* Fondo oscuro principal */
+    --color-text-light: #e0e0e0; /* Texto claro principal */
+    --color-text-secondary: #bdc3c7; /* Texto secundario/grisáceo */
+    --font-primary: 'Teko', sans-serif; /* Fuente para titulares */
+    --font-secondary: 'Roboto', sans-serif; /* Fuente para cuerpo de texto */
+}
+
+/* --- Reseteo Básico y Estilos Generales del Cuerpo --- */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-secondary);
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    scroll-behavior: smooth; /* Para un desplazamiento suave al usar anclas */
+}
+
+/* --- Estilos de la Barra de Navegación --- */
+.main-header {
+    position: fixed; /* Fija la navegación en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    background-color: rgba(18, 24, 40, 0.5); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque para el fondo */
+    border-bottom: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.nav-logo {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Espacio entre los elementos del menú */
+}
+
+.nav-menu a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--color-primary);
+}
+
+
+/* --- Estilos de la Sección 1: Portada (Hero) --- */
+.hero-section {
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Evita que el video se desborde */
+    padding: 20px;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Lo coloca detrás del contenido */
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video cubra todo el espacio */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Capa oscura sobre el video */
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-title {
+    font-family: var(--font-primary);
+    font-size: 4.5rem; /* Tamaño grande y épico */
+    margin: 0;
+    line-height: 1.1;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(243, 156, 18, 0.7); /* Efecto de resplandor */
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin: 20px 0 30px 0;
+    color: var(--color-text-secondary);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    font-family: var(--font-primary);
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-primary);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    transform: translateY(-3px);
+}
+
+
+/* --- Estilos de la Sección 2: Introducción --- */
+.intro-section {
+    padding: 80px 20px; /* Espacio interno para que respire */
+    background-color: #0e1320; /* Un tono ligeramente diferente para separar secciones */
+}
+
+.intro-content-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.intro-text {
+    flex: 2; /* Ocupa 2/3 del espacio */
+}
+
+.intro-visual {
+    flex: 1; /* Ocupa 1/3 del espacio */
+    height: 400px;
+    background-image: url('https://i.postimg.cc/T2zDtf6b/LOGO-3-1.png'); /* Logo de la app como placeholder */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
+.section-title {
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 650px; /* Ancho de línea cómodo para leer */
+}
+
+.intro-text h3 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    color: #fff;
+    margin-top: 40px;
+}
