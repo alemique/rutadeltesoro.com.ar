@@ -291,3 +291,61 @@ html, body {
     color: var(--color-text-secondary);
     margin: 0;
 }
+
+/* --- Estilos de la Sección 4: ¿Cómo se Juega? --- */
+.how-to-play-section {
+    padding: 80px 20px;
+    background-color: var(--color-background-dark); /* Fondo oscuro principal */
+}
+
+.how-to-play-section .section-title {
+    margin-bottom: 60px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas para los 5 pasos */
+    gap: 30px; /* Espacio entre las tarjetas */
+}
+
+.step-card {
+    background-color: #0e1320; /* Un fondo muy oscuro, casi negro */
+    border: 1px solid rgba(243, 156, 18, 0.2); /* Borde sutil naranja */
+    padding: 30px;
+    border-radius: 10px;
+    position: relative; /* Necesario para posicionar el número */
+    overflow: hidden; /* Evita que el número se salga de la tarjeta */
+    transition: background-color 0.3s ease;
+}
+
+.step-card:hover {
+    background-color: #161e31; /* Se ilumina ligeramente al pasar el ratón */
+}
+
+.step-number {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    font-family: var(--font-primary);
+    font-size: 6rem; /* Número grande como marca de agua */
+    font-weight: 700;
+    color: rgba(243, 156, 18, 0.08); /* Color naranja muy transparente */
+    z-index: 1; /* Detrás del texto pero sobre el fondo */
+}
+
+.step-card h3 {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin: 0 0 15px 0;
+    position: relative; /* Para que esté por encima del número */
+    z-index: 2;
+}
+
+.step-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    position: relative; /* Para que esté por encima del número */
+    z-index: 2;
+}
