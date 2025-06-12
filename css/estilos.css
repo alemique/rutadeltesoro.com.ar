@@ -26,8 +26,7 @@ html, body {
     font-family: var(--font-secondary);
     background-color: var(--color-background-dark);
     color: var(--color-text-light);
-    scroll-behavior: smooth;
-    overflow-x: hidden; /* ¡NUEVO! Evita el scroll horizontal en toda la página */
+    scroll-behavior: smooth; /* Para un desplazamiento suave al usar anclas */
 }
 
 /* --- Estilos Comunes y Contenedores --- */
@@ -814,7 +813,9 @@ html, body {
 @media (max-width: 992px) {
 
     /* --- Adaptación de la Navegación --- */
-    /* ... (resto de tus estilos aquí) ... */
+    .nav-toggle {
+        display: block;
+    }
 
     .nav-right-cluster {
         position: fixed;
@@ -827,7 +828,6 @@ html, body {
         justify-content: center;
         align-items: center;
         transition: right 0.5s ease-in-out;
-        overflow-x: hidden; /* ¡NUEVO! Asegura que el contenido del menú no se desborde horizontalmente */
     }
 
     .nav-right-cluster.active {
