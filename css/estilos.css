@@ -238,7 +238,26 @@ html, body {
 .intro-section {
     padding: 80px 20px;
     background-color: var(--color-background-deep);
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    overflow: hidden; /* Evita que el fondo se salga */
 }
+
+/* Pseudo-elemento para la imagen de fondo con opacidad */
+.intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imagenes/Brujula.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.1; /* Ajusta este valor (0.0 a 1.0) para la opacidad deseada */
+    z-index: 1; /* Detrás del contenido */
+}
+
 
 .intro-section .section-title {
     text-align: left;
@@ -250,6 +269,8 @@ html, body {
     display: flex;
     align-items: center;
     gap: 50px;
+    position: relative; /* Necesario para que esté sobre el pseudo-elemento */
+    z-index: 2; /* Encima del fondo de la brújula */
 }
 
 .intro-text {
@@ -882,6 +903,38 @@ html, body {
     }
 }
 
+/* --- Estilos para los Mensajes de Estado del Formulario --- */
+#form-status {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+    display: none; /* Por defecto está oculto */
+}
+
+#form-status.status-loading,
+#form-status.status-success,
+#form-status.status-error {
+    display: block; /* Se muestra cuando tiene una clase */
+}
+
+#form-status.status-loading {
+    background-color: rgba(22, 160, 133, 0.2);
+    color: #1abc9c;
+}
+
+#form-status.status-success {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+#form-status.status-error {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    font-weight: bold;
+}
 /* --- Estilos del Preloader Personalizado --- */
 #preloader {
     position: fixed;
@@ -954,7 +1007,7 @@ html, body {
         opacity: 0.9;
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.10);
         opacity: 1;
     }
     100% {
