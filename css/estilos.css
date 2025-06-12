@@ -846,6 +846,10 @@ html, body {
 
     .btn-cta {
         margin-top: 20px;
+        /* NUEVO: Ajuste para que los botones dentro del menú se adapten al ancho */
+        width: 90%; 
+        max-width: 300px; /* Limita el tamaño máximo del botón */
+        box-sizing: border-box; /* Asegura que el padding no añada ancho extra */
     }
 
     .nav-toggle.active .hamburger {
@@ -858,7 +862,9 @@ html, body {
         transform: rotate(-45deg) translate(5px, -7px);
     }
 
-    /* --- Adaptación de Otras Secciones --- */
+    /* --- Adaptación de Otras Secciones (resto de tu código responsive) --- */
+    /* ... el resto de tu código responsive iría aquí ... */
+
     .hero-title {
         font-size: 3rem;
     }
