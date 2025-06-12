@@ -88,7 +88,7 @@ html, body {
 .nav-right-cluster {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 30px; /* Reducimos el gap para acomodar mejor los botones */
 }
 
 .nav-menu {
@@ -110,20 +110,35 @@ html, body {
     color: var(--color-primary);
 }
 
+/* Contenedor para los botones del header */
+.header-buttons {
+    display: flex;
+    gap: 15px; /* Espacio entre los botones */
+}
+
+/* Estilo mejorado para los botones de acción del header */
 .btn-cta {
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    font-family: var(--font-primary); /* Mejora: Fuente principal */
+    text-transform: uppercase; /* Mejora: Mayúsculas */
+    letter-spacing: 1.5px; /* Mejora: Espaciado de letras */
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 700;
     background-color: var(--color-secondary);
     color: #fff;
-    border-color: var(--color-secondary);
+    border: 2px solid transparent;
+    border-radius: 8px;
     box-shadow: 0 0 15px rgba(230, 126, 34, 0.5);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
 }
 
 .btn-cta:hover {
     background-color: var(--color-primary);
-    border-color: var(--color-primary);
     box-shadow: 0 0 25px rgba(243, 156, 18, 0.8);
     color: var(--color-background-dark);
+    transform: translateY(-2px);
 }
 
 /* --- Estilos de la Sección 1: Portada (Hero) --- */
@@ -182,10 +197,10 @@ html, body {
 /* --- Estilos de Botones Generales y Destacados --- */
 .btn {
     font-family: var(--font-primary);
-    padding: 15px 30px;
-    border-radius: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.0rem;
     transition: all 0.3s ease;
     border: 2px solid var(--color-primary);
     cursor: pointer;
