@@ -564,6 +564,7 @@ html, body {
     padding: 30px;
     border: 2px dashed var(--color-secondary);
     border-radius: 10px;
+    text-align: center;
 }
 
 .demo-placeholder p {
@@ -592,6 +593,9 @@ html, body {
 .table-container {
     max-width: 900px;
     margin: 0 auto;
+    /* MODIFICACIÓN: Permite scroll horizontal si el contenido de la tabla es demasiado ancho */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
 }
 
 .table-container p { /* Estilo para los mensajes de Carga/Error */
@@ -616,6 +620,8 @@ html, body {
     padding: 15px 20px;
     text-align: left;
     border-bottom: 1px solid rgba(18, 24, 40, 0.8);
+    /* Asegura que el texto en las celdas no se rompa en múltiples líneas */
+    white-space: nowrap;
 }
 
 .leaderboard-table thead th {
@@ -650,6 +656,26 @@ html, body {
 .leaderboard-table td:nth-child(3) { /* Puntos */
     font-weight: bold;
 }
+
+/* --- MODIFICACIONES PARA HACER LA TABLA MÁS COMPACTA EN MÓVILES (OPCIÓN 2) --- */
+@media (max-width: 768px) {
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 8px 10px; /* Reduce el padding para compactar el espacio */
+        font-size: 0.95em; /* Ligeramente más pequeña la fuente del texto en celdas */
+    }
+
+    .leaderboard-table thead th {
+        font-size: 1.4rem; /* Encabezado de la tabla más pequeño */
+        padding: 10px; /* Reduce el padding del encabezado */
+    }
+
+    .leaderboard-table td:first-child { /* Columna de Posición */
+        font-size: 1.5rem; /* El número de posición también más pequeño */
+        width: 50px; /* Reduce el ancho asignado a la columna de posición */
+    }
+}
+
 
 /* --- Estilos de la Sección 8: Aliados (Sponsors) --- */
 .allies-section {
@@ -863,8 +889,7 @@ html, body {
     }
 
     /* --- Adaptación de Otras Secciones (resto de tu código responsive) --- */
-    /* ... el resto de tu código responsive iría aquí ... */
-
+    
     .hero-title {
         font-size: 3rem;
     }
@@ -921,6 +946,40 @@ html, body {
 
     .form-container {
         padding: 20px;
+    }
+} /* Cierre del media query para 992px */
+
+/* --- Estilos para pantallas aún más pequeñas (celulares más chicos) --- */
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .btn-cta {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .nav-menu a {
+        font-size: 1.8rem;
+    }
+
+    /* Ajustes específicos para el formulario en móviles muy pequeños */
+    .form-group label {
+        font-size: 1.3rem;
+    }
+    .form-group input,
+    .form-group select {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    .form-group button.btn-primary {
+        padding: 15px;
+        font-size: 1.5rem;
     }
 }
 
@@ -992,7 +1051,7 @@ html, body {
 /* El logo que pulsa */
 .preloader-logo {
     /* AJUSTE AQUÍ: Triplicamos el tamaño del logo */
-    width: 360px; 
+    width: 360px;    
     height: auto;
     animation: pulse-logo 1.5s ease-in-out infinite;
     z-index: 2; /* Asegura que el logo esté sobre el spinner */
@@ -1010,9 +1069,9 @@ html, body {
     /* El truco del gradiente cónico para el destello */
     background: conic-gradient(
         from 0deg,
-        transparent 0%, 
-        transparent 70%, 
-        var(--color-highlight) 95%, 
+        transparent 0%,    
+        transparent 70%,    
+        var(--color-highlight) 95%,    
         transparent 100%
     );
     
