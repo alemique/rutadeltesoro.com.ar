@@ -683,6 +683,8 @@ html, body {
     background-color: var(--color-background-deep);
 }
 
+/* REMOVIDO: El estilo .sponsors-grid ya no es necesario, el slider-container lo reemplaza. */
+/*
 .sponsors-grid {
     margin-top: 40px;
     display: grid;
@@ -692,26 +694,63 @@ html, body {
     max-width: 1000px;
     margin: 40px auto;
 }
+*/
 
+/* NUEVO: Contenedor principal del slider de aliados */
+.slider-container {
+    width: 100%;
+    max-width: 1000px; /* Ajusta según el ancho deseado para el slider */
+    margin: 40px auto;
+    overflow: hidden; /* Oculta los logos que están fuera de la vista */
+    position: relative;
+    padding: 20px 0; /* Un poco de padding para que los logos no se peguen a los bordes */
+}
+
+/* NUEVO: Contenedor que se desplaza (contiene los logos duplicados) */
+.sponsors-track {
+    display: flex;
+    width: fit-content; /* Permite que el contenedor se ajuste al contenido total de los logos */
+    animation: scroll-sponsors 30s linear infinite; /* Duración y tipo de animación */
+}
+
+/* MODIFICADO: Estilos para cada logo individual dentro del slider */
 .sponsor-logo {
+    flex-shrink: 0; /* Evita que los logos se encojan */
+    width: 180px; /* Ancho fijo para cada logo. Ajusta según tus necesidades. */
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     padding: 10px;
-    height: 100px;
+    margin: 0 20px; /* Espacio entre logos */
+    border: 1px solid rgba(243, 156, 18, 0.1); /* Borde sutil */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .sponsor-logo img {
     max-width: 100%;
-    height: auto;
-    max-height: 80px;
-    transition: transform 0.3s ease;
+    max-height: 80px; /* Asegura que la imagen no exceda la altura del contenedor */
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro sin distorsión */
+    /* REMOVIDO: filter: grayscale(80%) brightness(1.2); */
+    transition: filter 0.3s ease, transform 0.3s ease; /* Se añade transform a la transición */
 }
 
 .sponsor-logo img:hover {
-    transform: scale(1.1);
+    filter: grayscale(80%) brightness(1.2); /* Ahora se aplica el filtro al pasar el mouse */
+    transform: scale(1.05);
+}
+
+/* NUEVO: Keyframes para la animación de scroll infinito */
+@keyframes scroll-sponsors {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Desplaza el track la mitad de su ancho (el ancho de una de las copias de los logos) */
+        transform: translateX(-50%);
+    }
 }
 
 .allies-section h3 {
@@ -873,7 +912,7 @@ html, body {
     .btn-cta {
         margin-top: 20px;
         /* NUEVO: Ajuste para que los botones dentro del menú se adapten al ancho */
-        width: 90%; 
+        width: 90%;    
         max-width: 300px; /* Limita el tamaño máximo del botón */
         box-sizing: border-box; /* Asegura que el padding no añada ancho extra */
     }
@@ -947,6 +986,15 @@ html, body {
     .form-container {
         padding: 20px;
     }
+
+    /* NUEVO: Media Queries para Responsividad del Slider */
+    .sponsor-logo {
+        width: 150px; /* Logos más pequeños en tabletas */
+        margin: 0 15px;
+    }
+    .sponsors-track {
+        animation-duration: 25s; /* Ajusta la velocidad para menos elementos visibles */
+    }
 } /* Cierre del media query para 992px */
 
 /* --- Estilos para pantallas aún más pequeñas (celulares más chicos) --- */
@@ -980,6 +1028,16 @@ html, body {
     .form-group button.btn-primary {
         padding: 15px;
         font-size: 1.5rem;
+    }
+
+    /* NUEVO: Media Queries para Responsividad del Slider */
+    .sponsor-logo {
+        width: 120px; /* Logos más pequeños en móviles */
+        height: 80px;
+        margin: 0 10px;
+    }
+    .sponsors-track {
+        animation-duration: 20s; /* Aumenta la velocidad en móviles */
     }
 }
 

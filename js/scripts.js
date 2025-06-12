@@ -139,3 +139,18 @@ async function fetchAndDisplayRanking() {
 
 // 4. Ejecutamos la función cuando la página se carga
 document.addEventListener('DOMContentLoaded', fetchAndDisplayRanking);
+
+// ... (tu código JavaScript existente) ...
+
+// Lógica para pausar el slider de sponsors al pasar el mouse
+const sponsorsTrack = document.querySelector('.sponsors-track');
+
+if (sponsorsTrack) {
+    sponsorsTrack.addEventListener('mouseenter', () => {
+        sponsorsTrack.style.animationPlayState = 'paused';
+    });
+
+    sponsorsTrack.addEventListener('mouseleave', () => {
+        sponsorsTrack.style.animationPlayState = 'running';
+    });
+}
