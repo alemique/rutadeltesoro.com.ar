@@ -1,3 +1,20 @@
+// --- Lógica para el Preloader ---
+// Se ejecuta en cuanto el DOM está listo para asegurar que el preloader exista.
+document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.getElementById('preloader');
+
+    // El evento 'load' del objeto window espera a que todos los recursos 
+    // (imágenes, iframes, css, etc.) se hayan cargado completamente.
+    window.addEventListener('load', () => {
+        if (preloader) {
+            // Añadimos la clase 'hidden', que activará las transiciones CSS 
+            // para ocultar el preloader suavemente.
+            preloader.classList.add('hidden');
+        }
+    });
+});
+
+
 // --- Lógica para el Acordeón del Reglamento ---
 
 // 1. Seleccionamos todos los encabezados del acordeón
@@ -21,7 +38,7 @@ accordionHeaders.forEach(header => {
         } else {
             // Si está cerrado, lo abrimos dándole la altura de su contenido
             content.style.maxHeight = content.scrollHeight + "px";
-        } 
+        }
     });
 });
 
@@ -33,16 +50,21 @@ const navCluster = document.querySelector('.nav-right-cluster');
 const navLinks = document.querySelectorAll('.nav-menu a');
 
 // 2. "Escuchador" para el clic en el botón hamburguesa
-navToggle.addEventListener('click', () => {
-    navCluster.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navCluster.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+}
+
 
 // 3. "Escuchador" para cerrar el menú al hacer clic en un enlace (útil en páginas de una sola vista)
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        navCluster.classList.remove('active');
-        navToggle.classList.remove('active');
+        if (navCluster && navCluster.classList.contains('active')) {
+             navCluster.classList.remove('active');
+             navToggle.classList.remove('active');
+        }
     });
 });
 
@@ -56,7 +78,8 @@ const tableContainer = document.querySelector('#ranking .table-container');
 
 // 3. Función para obtener los datos y construir la tabla
 async function fetchAndDisplayRanking() {
-    if (!tableContainer) return; // Si no encuentra el contenedor, no hace nada
+    // Solo se ejecuta si estamos en la página principal (donde existe la tabla)
+    if (!tableContainer) return;
 
     try {
         // Mostramos un mensaje de "Cargando..."
