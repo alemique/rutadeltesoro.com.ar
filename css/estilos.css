@@ -16,7 +16,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; font-family: var(--font-secondary); background-color: var(--color-background-dark); color: var(--color-text-light); scroll-behavior: smooth; }
 
-/* --- ESTILOS DEL PRELOADER (ACTUALIZADOS) --- */
+/* --- ESTILOS DEL PRELOADER --- */
 .preloader {
     position: fixed;
     top: 0;
@@ -35,7 +35,7 @@ html, body { margin: 0; padding: 0; font-family: var(--font-secondary); backgrou
 .preloader.hidden {
     opacity: 0;
     visibility: hidden;
-    pointer-events: none; /* Añadido para robustez */
+    pointer-events: none;
 }
 .preloader-logo-container {
     position: relative;
@@ -81,16 +81,45 @@ html, body { margin: 0; padding: 0; font-family: var(--font-secondary); backgrou
 .btn-secondary { background-color: transparent; color: var(--color-primary); }
 .btn-secondary:hover { background-color: var(--color-primary); color: var(--color-background-dark); transform: translateY(-3px); }
 
-/* --- Sección 2: Introducción --- */
-.intro-section { padding: 80px 20px; background-color: #0e1320; }
-.intro-content-container { max-width: 900px; margin: 0 auto; }
+/* --- Sección 2: Introducción (CON FONDO DE BRÚJULA) --- */
+.intro-section {
+    padding: 80px 20px;
+    background-color: #0e1320;
+    position: relative; /* Necesario para posicionar el fondo */
+    overflow: hidden; /* Evita que el fondo se salga */
+}
+
+/* Pseudo-elemento que contiene la imagen de la brújula */
+.intro-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; /* Tamaño de la brújula */
+    height: 600px;
+    background-image: url('../imagenes/Brujula.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.05; /* Muy sutil para no molestar la lectura */
+    z-index: 1; /* Detrás del contenido */
+}
+
+.intro-content-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative; /* Necesario para que esté sobre la brújula */
+    z-index: 2;
+}
+
 .intro-section .section-title { text-align: left; }
 .intro-text p { font-size: 1.1rem; line-height: 1.7; color: var(--color-text-secondary); }
 .intro-text h3 { font-family: var(--font-primary); font-size: 2rem; color: #fff; margin-top: 40px; }
 .intro-text { width: 100%; }
 
 /* El resto de los estilos continúan igual... */
-.mission-section { padding: 80px 20px; }
+.mission-section { padding: 80px 20px; background-color: var(--color-background-dark); }
 .mission-section .section-title { margin-bottom: 60px; }
 .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .mission-card { background-color: #161e31; padding: 40px 30px; border-radius: 10px; text-align: center; border: 1px solid rgba(243, 156, 18, 0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -180,11 +209,10 @@ html, body { margin: 0; padding: 0; font-family: var(--font-secondary); backgrou
     .step-big-number { font-size: 6rem; }
     .step-text-content h3 { font-size: 2.2rem; }
     .section-title { font-size: 2.5rem; }
-    /* Ajuste de animación del preloader en móviles */
+    /* Ajuste para el radio de la órbita en móviles */
     @keyframes pulseAndGlow {
         0% { transform: scale(0.95); filter: drop-shadow(0 0 8px rgba(243, 156, 18, 0.4)); }
         50% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(243, 156, 18, 0.8)); }
         100% { transform: scale(0.95); filter: drop-shadow(0 0 8px rgba(243, 156, 18, 0.4)); }
     }
 }
-
