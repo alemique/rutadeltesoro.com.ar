@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preinscripción - Ruta del Tesoro</title>
+    <meta name="description" content="Asegura tu lugar en la aventura. Preinscríbete ahora en la Ruta del Tesoro: Guardianes del Tiempo.">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-logo">
+                RUTA DEL TESORO
+            </a>
+            <div class="nav-right-cluster">
+                <a href="index.html" class="btn btn-secondary">VOLVER AL INICIO</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <div class="container">
+                <h2 class="section-title text-center">ASEGURA TU LUGAR EN LA HISTORIA</h2>
+                <p class="section-subtitle text-center">Completa el formulario para preinscribir a tu escuadrón de Guardianes. ¡Los cupos son limitados!</p>
+                
+                <div class="form-container">
+                    <form id="preinscripcion-form">
+                        <div class="form-group">
+                            <label for="captainName">Nombre y Apellido del Capitán</label>
+                            <input type="text" id="captainName" name="captainName" placeholder="Tu nombre y apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email de Contacto</label>
+                            <input type="email" id="email" name="email" placeholder="Recibirás las instrucciones aquí" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono (con WhatsApp)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Ej: 2644123456" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicleModel">Modelo del Vehículo</label>
+                            <input type="text" id="vehicleModel" name="vehicleModel" placeholder="Ej: Fiat Cronos" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehiclePlate">Patente del Vehículo</label>
+                            <input type="text" id="vehiclePlate" name="vehiclePlate" placeholder="Ej: AB 123 CD" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="participants">Cantidad de Exploradores (incluyéndote)</label>
+                            <select id="participants" name="participants" required>
+                                <option value="">Selecciona una cantidad...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4 (Máximo por vehículo)</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary" id="submit-button">ENVIAR PREINSCRIPCIÓN</button>
+                        </div>
+                    </form>
+                    <div id="form-status"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>© 2025 Ruta del Tesoro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('preinscripcion-form');
+        const statusDiv = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-button');
+        
+        // IMPORTANTE: PEGA AQUÍ LA URL DE TU SCRIPT DE GOOGLE
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzui05KO6I2W_v0pFJXU1Np8sQt3WLM0dCPhu8C0DhoNolyXtnW0y8hnBS8xJg-d6k/exec';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evitamos que la página se recargue
+
+            submitButton.disabled = true;
+            statusDiv.textContent = 'Enviando datos...';
+            statusDiv.className = 'status-loading';
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+
+                if (result.result === 'success') {
+                    statusDiv.textContent = '¡Preinscripción exitosa! Recibirás un correo con los próximos pasos.';
+                    statusDiv.className = 'status-success';
+                    form.reset(); // Limpiamos el formulario
+                } else {
+                    throw new Error(result.message || 'Ocurrió un error desconocido.');
+                }
+            } catch (error) {
+                statusDiv.textContent = `Error: No se pudo enviar la preinscripción. Por favor, intenta de nuevo. (${error.message})`;
+                statusDiv.className = 'status-error';
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
