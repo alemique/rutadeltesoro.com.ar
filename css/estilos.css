@@ -102,7 +102,7 @@ html, body { margin: 0; padding: 0; font-family: var(--font-secondary); backgrou
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.05; /* Muy sutil para no molestar la lectura */
+    opacity: 0.1; /* Muy sutil para no molestar la lectura */
     z-index: 1; /* Detrás del contenido */
 }
 
