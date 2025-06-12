@@ -1,12 +1,12 @@
 // --- Lógica para el Preloader ---
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.preloader');
-    // Damos un pequeño retardo para que la animación se aprecie
+    // Duración fija de 3 segundos (3000 milisegundos)
     setTimeout(() => {
         if (preloader) {
             preloader.classList.add('hidden');
         }
-    }, 500); // 500ms de retardo mínimo
+    }, 3000); 
 });
 
 
